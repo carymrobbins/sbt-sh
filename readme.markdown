@@ -1,15 +1,7 @@
 sbt-sh
 ======
 
-If you're like me you will often find yourself typing in shell commands into the sbt shell without thinking:
-
-	> git status
-	[error] Not a valid key: git (similar: target)
-	[error] git status
-	[error]    ^
-	>
-
-Using the sbt-sh plugin (and sbt-0.10) you can invoke shell commands:
+Using the sbt-sh plugin you can invoke shell commands:
 
 	> sh git status
 	# On branch master
@@ -22,17 +14,13 @@ Happiness and productivity ensues without the hassle of exiting sbt or opening m
 Installing
 ----------
 
-The easiest way to install the sbt-sh plugin is to add it to your global sbt plugin list. To do this create a *.sbt/plugins/project* file (if it does not already exist). In this file add the dependency on the sbt-sh plugin:
+Right now you must build from source.  After cloning, you can run -
 
-	import sbt._
-	
-	object MyPlugins extends Build {
-	  lazy val root = Project("root", file(".")) dependsOn(
-	    uri("git://github.com/steppenwells/sbt-sh.git")
-	  )
-	}
+    sbt publishLocal
 
-The sh plugin will be downloaded, built and installed next time you fire up sbt-0.10, and then available in all your sbt-0.10 builds.
+Now you can enable this plugin globally by adding the following to *~/.sbt/0.13/plugins/build.sbt* -
+
+    addSbtPlugin("org.sbtsh" % "xsbt-sh" % "0.1-SNAPSHOT")
 
 Usage
 -----
@@ -67,5 +55,3 @@ The sbt-sh plugin introduces a *sh* command to sbt, this will execute the rest o
 	
 	organization := "org.sbtsh"
 	> 
-
-By now I'm sure you've got the idea...
